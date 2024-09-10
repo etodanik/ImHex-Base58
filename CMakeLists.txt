@@ -48,8 +48,6 @@ elseif (NOT EXISTS $ENV{IMHEX_SDK_PATH})
 endif()
 add_subdirectory($ENV{IMHEX_SDK_PATH} ImHexSDK)
 
-set(ARCH x86_64)
-
 add_imhex_plugin(
     NAME
         base58_plugin

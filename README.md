@@ -1,19 +1,20 @@
-# ImHex Plugin Template
+# ImHex Base58 Plugin
 
-This is the official [ImHex](https://github.com/WerWolv/ImHex) plugin template. To get started, click on the `Use this Template` button!
+Adds a few useful features for working with Bitcoin style Base58 values (useful to debug Solana and Ethereum transactions and data structures).
 
-## Usage
+## Inline Visualizer
 
-The Plugin basically consists of three parts: The cmake build script, the GitHub Actions CI script and the actual code.
-- `.github/workflows`: The CI scripts
-    - This is the script that will automatically build the plugin for you. Modify this script when you upgrade to a new version of ImHex or when you need to install extra libraries for example
-- `CMakeLists.txt`: The cmake build script
-    - This file defines the build instructions. It's a regular old CMake script with a few extra functions. Refer to the documentation in the file.
-- `source/`, `include/`: Your code
-    - These folders contain all your source code. The `example_plugin.cpp` file contains the entry point for your Plugin
-- `romfs/`: Resource files
-    - ImHex Plugins have access to a system called the `romfs`. All files you place in this folder are bundled into your plugin and you can access them using the `romfs::` functions.
+By adding a `base58` inline visualizer it is possible to display encoded base58 string values for byte arrays.
+```
+struct PublicKey {
+    u8 data[32];
+} [[hex::inline_visualize("base58", data)]];
+```
 
- ## License Information
+![visualizer](https://github.com/user-attachments/assets/7284b878-be47-4ea0-adb5-26ca07da2043)
 
- The code in this template can be licensed under any license the user chooses to do so. 
+## Node
+
+There is also a data processing node that can decode a base58 string to a raw byte array.
+
+![node](https://github.com/user-attachments/assets/cfd7b637-5731-4e36-a06e-12ace902f9e3)

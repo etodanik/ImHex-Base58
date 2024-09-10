@@ -33,7 +33,7 @@ jobs:
           name: windows-build
           path: build/install
   macos:
-    runs-on: macos-14
+    runs-on: macos-12
     name: MacOS
     defaults:
       run:

@@ -3,7 +3,6 @@
 #include <romfs/romfs.hpp>
 #include <hex/plugin.hpp>
 #include <hex/data_processor/node.hpp>
-#include <hex/helpers/fmt.hpp>
 #include <hex/api/content_registry.hpp>
 #include <pl/patterns/pattern.hpp>
 
@@ -25,7 +24,7 @@ void drawBase58InlineVisualizer(pl::ptrn::Pattern &, pl::ptrn::IIterable &, bool
   auto decoded = arguments[0].toPattern().get()->getBytes();
   auto encoded = Base58::bitcoin().encode(decoded.data(), decoded.size());
   if (ImGui::Selectable(encoded.c_str(), false, ImGuiSelectableFlags_SelectOnClick, ImVec2(ImGui::GetColumnWidth(), ImGui::GetTextLineHeight()))) {
-    ImGui::SetClipboardText(encoded.c_str()); // Copy to clipboard when selected
+    ImGui::SetClipboardText(encoded.c_str());
   }
 }
 }

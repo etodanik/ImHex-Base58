@@ -55,5 +55,7 @@ add_imhex_plugin(
         source/base58_plugin.cpp
     INCLUDES
         include/
+    LIBRARIES
+        nlohmann_json
 )
 

@@ -48,6 +48,8 @@ elseif (NOT EXISTS $ENV{IMHEX_SDK_PATH})
 endif()
 add_subdirectory($ENV{IMHEX_SDK_PATH} ImHexSDK)
 
+set(ARCH x86_64)
+
 add_imhex_plugin(
     NAME
         base58_plugin
@@ -59,3 +61,6 @@ add_imhex_plugin(
         nlohmann_json
 )
 
+if (APPLE)
+    target_link_options(base58_plugin PRIVATE -undefined dynamic_lookup -flat_namespace)
+endif()

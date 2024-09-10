@@ -1,6 +1,7 @@
 #include "base_x.hh";
 #include <imgui.h>
 #include <romfs/romfs.hpp>
+#include <nlohmann/json.hpp>
 #include <hex/plugin.hpp>
 #include <hex/data_processor/node.hpp>
 #include <hex/api/content_registry.hpp>
@@ -33,8 +34,9 @@ IMHEX_PLUGIN_SETUP("Base58 Plugin", "Danny Povolotski", "Adds Base58 support") {
   using ParamCount = pl::api::FunctionParameterCount;
 
   hex::log::debug("Using romfs: '{}'", romfs::name());
-  for (auto &path : romfs::list("lang"))
+  for (auto &path : romfs::list("lang")) {
     hex::ContentRegistry::Language::addLocalization(nlohmann::json::parse(romfs::get(path).string()));
+  }
 
   ContentRegistry::DataProcessorNode::add<NodeDecodingBase58>("hex.builtin.nodes.decoding", "hex.base58_plugin.nodes.decoding.base58");
   ContentRegistry::PatternLanguage::addInlineVisualizer("base58", drawBase58InlineVisualizer, ParamCount::exactly(1));

@@ -48,17 +48,12 @@ elseif (NOT EXISTS $ENV{IMHEX_SDK_PATH})
 endif()
 add_subdirectory($ENV{IMHEX_SDK_PATH} ImHexSDK)
 
-# Register the plugin
-# This will configure everything you need to make your plugin work
-# Modify the arguments to your needs. Right now it defines a plugin called `example_plugin`
-# with a single source file called `example_plugin.cpp` in the `source` directory
-# By default you have access to the libimhex library to interact with ImHex
-# as well as libwolv, libromfs, libfmt and ImGui, but you can link against any libraries you want
 add_imhex_plugin(
     NAME
-        example_plugin
+        base58_plugin
     SOURCES
-        source/example_plugin.cpp
+        source/base58_plugin.cpp
     INCLUDES
-        include
+        include/
 )
+

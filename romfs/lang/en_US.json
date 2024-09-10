@@ -1,0 +1,10 @@
+{
+  "code": "en-US",
+  "language": "English",
+  "country": "United States",
+  "fallback": true,
+  "translations": {
+    "hex.base58_plugin.nodes.decoding.base58.header": "Decode Base58",
+    "hex.base58_plugin.nodes.decoding.base58": "Base58"
+  }
+}
